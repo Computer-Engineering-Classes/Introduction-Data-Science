@@ -1,3 +1,5 @@
+import os
+
 import tensorflow as tf
 from tensorflow.core.util.event_pb2 import Event
 
@@ -21,4 +23,7 @@ def fix_events(input_path: str, output_path: str):
 
 
 if __name__ == '__main__':
-    fix_events('events.out.tfevents.1647967329.DESKTOP-I1Q6GKF', 'events.out.tfevents.123456789.DESKTOP-I1Q6GKF')
+    name = 'events.out.tfevents.1647967329.DESKTOP-I1Q6GKF'
+    temp_name = 'temp_events'
+    fix_events(name, temp_name)
+    os.replace(temp_name, name)
